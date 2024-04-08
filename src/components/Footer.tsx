@@ -1,9 +1,33 @@
+"use client";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
+
 import { Copyright, LucideArrowUpRight } from "lucide-react";
 function Footer() {
+  useGSAP(function () {
+    gsap.fromTo(
+      "#g_header",
+      {
+        opacity: 0,
+        x: 500,
+      },
+      {
+        opacity: 1,
+        x: 0,
+        scrollTrigger: "#g_header",
+        ease: "circ",
+        duration: 1,
+      },
+    );
+  }, []);
+
   return (
     <footer className="grid h-screen grid-cols-1 gap-12 md:grid-cols-2">
       <div className="md:col-span-2">
-        <h2 className="my-12 text-4xl">
+        <h2 id="g_header" className="my-12 text-4xl">
           Join us in making
           <br />
           <span className="font-bold">a better web</span>

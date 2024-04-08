@@ -1,9 +1,44 @@
-import { FaArrowLeft, FaArrowRight, FaLongArrowAltRight } from "react-icons/fa";
+"use client";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { FaLongArrowAltRight } from "react-icons/fa";
 
 function Hero() {
+  useGSAP(function () {
+    gsap.fromTo(
+      "#section",
+      {
+        x: -2000,
+      },
+      {
+        x: 0,
+        duration: 2,
+        ease: "expo.out",
+      },
+    );
+
+    gsap.fromTo(
+      "#div",
+      {
+        x: 2000,
+        opacity: 0,
+      },
+      {
+        x: 0,
+        opacity: 1,
+        duration: 2,
+        delay: 0.5,
+        ease: "expo",
+      },
+    );
+  }, []);
+
   return (
-    <section className="h-[25rem] overflow-hidden rounded-lg bg-gradient-to-br from-yellow-500 to-purple-500 px-8 py-4">
-      <div className="text-zinc-900">
+    <section
+      id="section"
+      className="h-[25rem] overflow-hidden rounded-lg bg-gradient-to-br from-yellow-500 to-purple-500 px-8 py-4"
+    >
+      <div id="div" className="text-zinc-900">
         <h1 className="pb-4 pt-10 text-3xl font-bold md:text-6xl">
           makwaje.creative
         </h1>

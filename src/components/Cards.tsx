@@ -1,4 +1,78 @@
+"use client";
+
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 function Cards() {
+  useGSAP(function () {
+    gsap.fromTo(
+      "#g_card1",
+      {
+        x: -400,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: "#g_card1",
+          start: "top 80%",
+        },
+        x: 0,
+        opacity: 1,
+        duration: 1,
+      },
+    );
+    gsap.fromTo(
+      "#g_card2",
+      {
+        y: 200,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: "#g_card2",
+          start: "top 80%",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 1,
+      },
+    );
+    gsap.fromTo(
+      "#g_card3",
+      {
+        y: 200,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: "#g_card3",
+          start: "top 80%",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 1,
+      },
+    );
+    gsap.fromTo(
+      "#g_card4",
+      {
+        x: 200,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: "#g_card4",
+          start: "top 80%",
+        },
+        x: 0,
+        opacity: 1,
+        duration: 1,
+      },
+    );
+  }, []);
+
   return (
     <section
       className="
@@ -8,7 +82,10 @@ function Cards() {
     md:grid-cols-3
     "
     >
-      <div className="text-zinc-800 h-full space-y-6 rounded-xl bg-neutral-100 p-6">
+      <div
+        id="g_card1"
+        className="h-full space-y-6 rounded-xl bg-neutral-100 p-6 text-zinc-800"
+      >
         <h2 className="my-4 text-3xl">Did you know?</h2>
 
         <p>
@@ -22,7 +99,10 @@ function Cards() {
         </p>
       </div>
       {/*  */}
-      <div className=" bg-zinc-700 h-full space-y-6 rounded-xl p-6 text-neutral-100 md:col-span-2">
+      <div
+        id="g_card2"
+        className=" h-full space-y-6 rounded-xl bg-zinc-700 p-6 text-neutral-100 md:col-span-2"
+      >
         <h2 className="my-4 text-3xl">What is the sustainable.dev?</h2>
 
         <p>
@@ -38,12 +118,15 @@ function Cards() {
           improve on the current state of the web.
         </p>
 
-        <button className="bg-zinc-900 rounded-md px-4 py-2 font-light tracking-wide text-neutral-50">
+        <button className="rounded-md bg-zinc-900 px-4 py-2 font-light tracking-wide text-neutral-50">
           Find out more
         </button>
       </div>
       {/*  */}
-      <div className="h-full  space-y-6 rounded-xl  bg-gradient-to-bl from-violet-600 to-green-400/40 to-90% p-6 font-medium text-neutral-100  md:col-span-2">
+      <div
+        id="g_card3"
+        className="h-full  space-y-6 rounded-xl  bg-gradient-to-bl from-violet-600 to-green-400/40 to-90% p-6 font-medium text-neutral-100  md:col-span-2"
+      >
         <h2 className="my-4 text-3xl">Why be a sustainable developer?</h2>
 
         <p>
@@ -64,7 +147,10 @@ function Cards() {
         </p>
       </div>
       {/*  */}
-      <div className="text-zinc-800  h-full space-y-6 rounded-xl bg-orange-300/95 p-6">
+      <div
+        id="g_card4"
+        className="h-full  space-y-6 rounded-xl bg-orange-300/95 p-6 text-zinc-800"
+      >
         <h2 className="my-4 text-3xl">Hire a sustainable developer</h2>
 
         <p>
@@ -81,7 +167,7 @@ function Cards() {
           next project.
         </p>
 
-        <button className="bg-zinc-900 rounded-md px-4 py-2 font-light tracking-wide text-neutral-50">
+        <button className="rounded-md bg-zinc-900 px-4 py-2 font-light tracking-wide text-neutral-50">
           View the directory
         </button>
       </div>

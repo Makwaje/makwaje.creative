@@ -1,6 +1,13 @@
+"use client";
 import Image from "next/image";
 import { LucideArrowUpRight } from "lucide-react";
 ("react-icons/fa");
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type CardProps = {
   header: String;
@@ -11,9 +18,47 @@ type CardProps = {
 };
 
 function Card({ header, tags, color = "zinc", imgSrc, desc }: CardProps) {
+  useGSAP(function () {
+    gsap.fromTo(
+      "#g_card",
+      {
+        y: 200,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: "g_card",
+          start: "top",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.5,
+      },
+    );
+    gsap.fromTo(
+      "#g_card_white",
+      {
+        y: -200,
+        opacity: 0,
+      },
+      {
+        scrollTrigger: {
+          trigger: "#g_card_white",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 1,
+        stagger: 0.3,
+      },
+    );
+  }, []);
   if (color === "zinc")
     return (
-      <div className="flex min-w-[15rem] flex-1 flex-col gap-8 rounded-xl bg-zinc-700 p-8">
+      <div
+        id="g_card"
+        className="flex min-w-[15rem] flex-1 flex-col gap-8 rounded-xl bg-zinc-700 p-8"
+      >
         {tags && (
           <div className="space-x-2">
             {tags.map((tag, i) => {
@@ -45,7 +90,10 @@ function Card({ header, tags, color = "zinc", imgSrc, desc }: CardProps) {
     );
   else {
     return (
-      <div className="flex min-w-[15rem] flex-1 flex-col gap-8 rounded-xl bg-neutral-100 p-8 text-zinc-900 duration-150 hover:scale-[1.01]">
+      <div
+        id="g_card_white"
+        className="flex min-w-[15rem] flex-1 flex-col gap-8 rounded-xl bg-neutral-100 p-8 text-zinc-900 duration-150 hover:scale-[1.01]"
+      >
         <div className="">
           <Image
             src={imgSrc as string}
