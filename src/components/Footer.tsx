@@ -25,7 +25,7 @@ function Footer() {
   }, []);
 
   return (
-    <footer className="grid h-screen grid-cols-1 gap-12 md:grid-cols-2">
+    <footer className="grid h-screen grid-cols-1 gap-12 overflow-x-hidden overflow-y-hidden md:grid-cols-2">
       <div className="md:col-span-2">
         <h2 id="g_header" className="my-12 text-4xl">
           Join us in making

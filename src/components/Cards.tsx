@@ -79,6 +79,7 @@ function Cards() {
     grid 
     grid-cols-1
     gap-4
+    overflow-hidden
     md:grid-cols-3
     "
     >
